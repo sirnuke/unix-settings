@@ -1,3 +1,14 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Plugin 'gmarik/vundle'
+Plugin 'Valloric/YouCompleteMe'
+
+filetype plugin indent on
+
 colors dante
 syn on
 set guifont=Monaco\ 10
@@ -8,7 +19,11 @@ set number
 set formatoptions=l
 set lbr
 set tabstop=2 shiftwidth=2 softtabstop=2 smarttab expandtab
-filetype indent on
+
+let g:load_doxygen_syntax=1
+
+set colorcolumn=100
+highlight ColorColumn ctermbg=darkgray
 
 func ExecuteCurrentFile()
     silent! :bdelete! ~/.vim/output
@@ -54,4 +69,10 @@ autocmd BufRead,BufNewFile *.vapi
 
 autocmd BufRead,BufNewFile *.json
     \ set syntax=javascript filetype=javascript
+
+autocmd BufRead,BufNewFile Makefile
+    \ set noexpandtab
+
+autocmd BufRead,BufNewFile *.md
+    \ set syntax=markdown filetype=markdown spell
 
