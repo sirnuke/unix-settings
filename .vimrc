@@ -51,7 +51,7 @@ autocmd BufNewFile,BufRead *.hx
 autocmd BufNewFile,BufRead *.php,*.inc
     \ set syntax=php filetype=php
 
-autocmd BufNewFile,BufRead *.txt,bzr_log.*
+autocmd BufNewFile,BufRead *.txt,bzr_log.*,.git/COMMIT_EDITMSG
     \ set spell
 
 autocmd BufNewFile,BufRead *.m,*.j
