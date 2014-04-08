@@ -9,19 +9,23 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'shinokada/dragvisuals.vim'
 
 filetype plugin indent on
+" End vundle configuration
 
+" Highlighting, colors, visual, wrapping, etc
 colors dante
 syn on
 set guifont=Monaco\ 10
-set autoindent
 set tags=tags;/
 set nowrapscan
 set number
-set formatoptions=l
 set lbr
+set formatoptions=nlro
+let g:load_doxygen_syntax=1
+
+" Indenting
+set autoindent
 set tabstop=2 shiftwidth=2 softtabstop=2 smarttab expandtab
 
-let g:load_doxygen_syntax=1
 
 " Visual move configuration
 vmap <expr> <LEFT>  DVB_Drag('left')
@@ -42,11 +46,14 @@ func ExecuteCurrentFile()
     redraw!
 endfunction
 
+" Helper function to execute the current file
 com Exec call ExecuteCurrentFile()
 
+" Override s/S to insert/append a single character
 nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>
 nnoremap S :exec "normal a".nr2char(getchar())."\e"<CR>
 
+" Specific filetype options
 autocmd BufNewFile,BufRead *.lisp
     \ set lisp
 
