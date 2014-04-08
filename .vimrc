@@ -6,6 +6,7 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'shinokada/dragvisuals.vim'
 
 filetype plugin indent on
 
@@ -21,6 +22,14 @@ set lbr
 set tabstop=2 shiftwidth=2 softtabstop=2 smarttab expandtab
 
 let g:load_doxygen_syntax=1
+
+" Visual move configuration
+vmap <expr> <LEFT>  DVB_Drag('left')
+vmap <expr> <RIGHT> DVB_Drag('right')
+vmap <expr> <UP>    DVB_Drag('up')
+vmap <expr> <DOWN>  DVB_Drag('down')
+vmap <expr> D       DVB_Duplicate()
+let g:DVB_TrimWS=1
 
 set colorcolumn=100
 highlight ColorColumn ctermbg=darkgray
