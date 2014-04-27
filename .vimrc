@@ -20,6 +20,7 @@ set nowrapscan
 set number
 set lbr
 set formatoptions=nlro
+set backspace=indent,start
 let g:load_doxygen_syntax=1
 
 " Indenting
