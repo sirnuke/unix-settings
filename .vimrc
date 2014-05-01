@@ -27,7 +27,6 @@ let g:load_doxygen_syntax=1
 set autoindent
 set tabstop=2 shiftwidth=2 softtabstop=2 smarttab expandtab
 
-
 " Visual move configuration
 vmap <expr> <LEFT>  DVB_Drag('left')
 vmap <expr> <RIGHT> DVB_Drag('right')
@@ -61,6 +60,7 @@ autocmd BufNewFile,BufRead *.lisp
 autocmd BufNewFile,BufRead *.py,SConstruct,SConscript,wscript,wscript_build
     \ set syntax=python filetype=python
     \ list listchars=tab:>-
+    \ tabstop=2 shiftwidth=2 softtabstop=2
 
 autocmd BufNewFile,BufRead *.hx
     \ set syntax=haxe filetype=haxe cindent
