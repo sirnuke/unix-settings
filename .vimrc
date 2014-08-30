@@ -8,6 +8,9 @@ Plugin 'gmarik/vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'shinokada/dragvisuals.vim'
 
+Bundle 'kchmck/vim-coffee-script'
+
+syntax enable
 filetype plugin indent on
 " End vundle configuration
 
