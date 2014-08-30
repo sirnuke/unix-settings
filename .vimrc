@@ -7,6 +7,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'shinokada/dragvisuals.vim'
+Plugin 'bling/vim-airline'
 
 Bundle 'kchmck/vim-coffee-script'
 
