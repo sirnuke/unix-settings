@@ -24,6 +24,7 @@ compinit
 
 sshx () { echo -n -e \\033]0\;$*\\007; ssh $*; echo -n -e "\033]0;`hostname -s`\007"; }
 title () { echo -n -e \\033]0\;$*\\007; }
+dtitle () { echo -n -e \\033]0\;${PWD##*/}\\007; }
 rtitle () { echo -n -e \\033]0\;`hostname -s`\\007; }
 rcd () { cd $*; dirs -c; }
 
