@@ -1,6 +1,11 @@
 export CVS_RSH=/usr/bin/ssh
+prompt_base="$(print '%{\e[1;34m%}%n%{\e[0m%}')%B@%b$(print '%{\e[1;33m%}%m%{\e[1;30m%}:%{\e[0m%}')%U%~%u"
 
-export PS1="$(print '%{\e[1;34m%}%n%{\e[0m%}')%B@%b$(print '%{\e[1;33m%}%m%{\e[1;30m%}:%{\e[0m%}')%U%~%u$ "
+if [[ $(print -P "%#") == '#' ]] ; then
+  export PS1="$prompt_base# "
+else
+  export PS1="$prompt_base$ "
+fi
 
 export RPS1="[%*/%D]"
 
