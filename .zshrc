@@ -15,18 +15,32 @@ setopt ignoreeof
 setopt autocd
 setopt autopushd
 setopt pushdignoredups
-#setopt pushdsilent
 setopt correct
 
 # Enable compsys completion.
 autoload -U compinit
 compinit
 
-sshx () { echo -n -e \\033]0\;$*\\007; ssh $*; echo -n -e "\033]0;`hostname -s`\007"; }
-title () { echo -n -e \\033]0\;$*\\007; }
-dtitle () { echo -n -e \\033]0\;${PWD##*/}\\007; }
-rtitle () { echo -n -e \\033]0\;`hostname -s`\\007; }
+title() { export TITLE_LABEL="$*" }
+rtitle() { export TITLE_LABEL="shell" }
 rcd () { cd $*; dirs -c; }
+
+rtitle
+
+set_window_title()
+{
+  if [[ $1 != "" ]] ; then
+    cmd=" -- $1"
+  else
+    cmd=""
+  fi
+  echo -n -e \\033]0\;$USER@`hostname -s`:`pwd` \($TITLE_LABEL\)$cmd\\007;
+}
+
+precmd() { set_window_title; }
+preexec() { set_window_title $1; }
+
+preexec
 
 alias proxy='title "seleucus (proxy)"; ssh degrendel.getmyip.com -D 8080; title "**proxy closed**"'
 alias mktags='ctags --langmap=php:+.inc --exclude=design --fields=+S -R *'
@@ -34,7 +48,6 @@ alias mktagsv='ctags --langmap=php:+.inc --exclude=design --fields=+S -V -R *'
 alias ls='ls -h --color=auto'
 alias screen='screen -T xterm'
 alias update='sudo aptitude update && sudo aptitude -y full-upgrade'
-alias jirbs='jobs && dirs'
 alias grep='grep --color=auto'
 
 bindkey -v
@@ -49,6 +62,4 @@ bindkey "\eOH"  vi-beginning-of-line  # Home gnome-terminal
 bindkey "\e[4~" vi-end-of-line        # End Linux console
 bindkey "\e[F"  vi-end-of-line        # End xterm
 bindkey "\eOF"  vi-end-of-line        # End gnome-terminal
-
-rtitle
 
