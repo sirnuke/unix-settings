@@ -1,6 +1,6 @@
 export CVS_RSH=/usr/bin/ssh
 
-export PS1="$(print '%{\e[1;34m%}%n%{\e[0m%}')%B@%b$(print '%{\e[1;33m%}%m%{\e[1;30m%}:%{\e[0m%}')%U%d%u$ "
+export PS1="$(print '%{\e[1;34m%}%n%{\e[0m%}')%B@%b$(print '%{\e[1;33m%}%m%{\e[1;30m%}:%{\e[0m%}')%U%~%u$ "
 
 export RPS1="[%*/%D]"
 
@@ -34,7 +34,8 @@ set_window_title()
   else
     cmd=""
   fi
-  echo -n -e \\033]0\;$USER@`hostname -s`:`pwd` \($TITLE_LABEL\)$cmd\\007;
+  dir=`pwd | sed "s:${HOME}:~:"`
+  echo -n -e \\033]0\;$USER@`hostname -s`:$dir \($TITLE_LABEL\)$cmd\\007;
 }
 
 precmd() { set_window_title; }
