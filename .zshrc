@@ -11,15 +11,20 @@ setopt pushdignoredups
 setopt correct
 
 ##### Prompt
-prompt_base="%{$fg_bold[blue]%}%n%{$fg_bold[white]%}@%{$fg_bold[yellow]%}%m%{$fg_bold[white]%}:%{$fg_no_bold[white]%}%U%~%u"
+prompt_base="%B%{$fg[white]%}%D{[%r] [%a %e %b %Y]} %(?..%{$fg[red]%}[%?])%{$reset_color%}%b
+
+===== %B%{$fg[blue]%}%n%{$fg[white]%}@%{$fg[yellow]%}%m%{$fg[white]%}:%b%{$fg[white]%}%U%d%u"
 
 if [[ $(print -P "%#") == '#' ]] ; then
-  export PS1="$prompt_base# "
+  prompt_user_character='#'
 else
-  export PS1="$prompt_base$ %{$reset_color%}"
+  prompt_user_character='$'
 fi
 
-export RPS1="%(?.%{$fg_no_bold[white]%}[$?].%{$fg_no_bold[red]%}[%?])%{$reset_color%} %D{[%r] [%a %e %b %Y]}"
+export PS1="$prompt_base
+%b%{$fg[white]%}$prompt_user_character %{$reset_color%}"
+
+export RPS1="%{$fg_bold[white]%}%D{[%r] [%a %e %b %Y]}%{$reset_color%}%b"
 
 ##### Window title
 set_window_title()
