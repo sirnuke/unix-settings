@@ -45,22 +45,22 @@ set_command_time()
     command_time_days=command_time))
 
   command_time=
-  if [[ $command_time_days > 0 ]] ; then
+  if [[ $command_time_days -gt 0 ]] ; then
     command_time="$command_time${command_time_days}d"
   fi
-  if [[ $command_time_hours > 0 ]] ; then
+  if [[ $command_time_hours -gt 0 ]] ; then
     if [[ ! -z "$command_time" ]] ; then
       command_time="$command_time "
     fi
     command_time="$command_time${command_time_hours}h"
   fi
-  if [[ $command_time_minutes > 0 ]] ; then
+  if [[ $command_time_minutes -gt 0 ]] ; then
     if [[ ! -z "$command_time" ]] ; then
       command_time="$command_time "
     fi
     command_time="$command_time${command_time_minutes}m"
   fi
-  if [[ $command_time_seconds > 0 ]] ; then
+  if [[ $command_time_seconds -gt 0 ]] ; then
     if [[ ! -z "$command_time" ]] ; then
       command_time="$command_time "
     fi
@@ -79,7 +79,7 @@ set_window_title()
     cmd=""
   fi
   dir=`pwd | sed "s:${HOME}:~:"`
-  if [[ ${#dir} > $(($TITLE_DIRECTORY_MAX_LENGTH - 3)) ]] ; then
+  if [[ ${#dir} -gt $(($TITLE_DIRECTORY_MAX_LENGTH - 3)) ]] ; then
     dir="...${dir:0,3-$TITLE_DIRECTORY_MAX_LENGTH}"
   fi
   echo -n -e \\033]0\;$TITLE_LABEL`hostname -s`:$dir $cmd\\007;
