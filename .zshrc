@@ -9,9 +9,10 @@ setopt autocd
 setopt autopushd
 setopt pushdignoredups
 setopt correct
+setopt prompt_subst
 
 ##### Prompt
-prompt_base="%B%{$fg[white]%}%D{[%r] [%a %e %b %Y]} %(?..%{$fg[red]%}[%?])%{$reset_color%}%b
+prompt_base="%B%{$fg[white]%}%D{[%r] [%a %e %b %Y]}%(?.%{$fg_no_bold[green]%} [%?].%{$fg_bold[red]%} [%?])\$command_time_label%{$reset_color%}%b
 
 ===== %B%{$fg[blue]%}%n%{$fg[white]%}@%{$fg[yellow]%}%m%{$fg[white]%}:%b%{$fg[white]%}%U%d%u"
 
@@ -25,6 +26,47 @@ export PS1="$prompt_base
 %b%{$fg[white]%}$prompt_user_character %{$reset_color%}"
 
 export RPS1="%{$fg_bold[white]%}%D{[%r] [%a %e %b %Y]}%{$reset_color%}%b"
+
+set_command_time()
+{
+  if [[ -z "$command_start_time" ]] ; then
+    command_time=
+    return
+  fi
+  command_time=$(($SECONDS - $command_start_time))
+  command_start_time=
+  if [[ $command_time < 2 ]] ; then
+    command_time=
+    return
+  fi
+  ((command_time_seconds=command_time % 60, command_time/=60,
+    command_time_minutes=command_time % 60, command_time/=60,
+    command_time_hours=command_time % 24, command_time/=24,
+    command_time_days=command_time))
+
+  command_time=
+  if [[ $command_time_days > 0 ]] ; then
+    command_time="$command_time${command_time_days}d"
+  fi
+  if [[ $command_time_hours > 0 ]] ; then
+    if [[ ! -z "$command_time" ]] ; then
+      command_time="$command_time "
+    fi
+    command_time="$command_time${command_time_hours}h"
+  fi
+  if [[ $command_time_minutes > 0 ]] ; then
+    if [[ ! -z "$command_time" ]] ; then
+      command_time="$command_time "
+    fi
+    command_time="$command_time${command_time_minutes}m"
+  fi
+  if [[ $command_time_seconds > 0 ]] ; then
+    if [[ ! -z "$command_time" ]] ; then
+      command_time="$command_time "
+    fi
+    command_time="$command_time${command_time_seconds}s"
+  fi
+}
 
 ##### Window title
 export TITLE_DIRECTORY_MAX_LENGTH=30
@@ -45,8 +87,21 @@ set_window_title()
 
 title() { export TITLE_LABEL="$* #" }
 rtitle() { export TITLE_LABEL="$USER@" }
-precmd() { set_window_title; }
-preexec() { set_window_title $1; }
+precmd()
+{
+  set_window_title;
+  set_command_time;
+  if [[ ! -z "$command_time" ]] ; then
+    command_time_label="%{$fg_bold[white]%} [~${command_time}]"
+  else
+    command_time_label=
+  fi
+}
+preexec()
+{
+  set_window_title $1
+  command_start_time=$SECONDS
+}
 
 rtitle
 preexec
