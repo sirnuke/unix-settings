@@ -27,6 +27,8 @@ export PS1="$prompt_base
 export RPS1="%{$fg_bold[white]%}%D{[%r] [%a %e %b %Y]}%{$reset_color%}%b"
 
 ##### Window title
+export TITLE_DIRECTORY_MAX_LENGTH=30
+
 set_window_title()
 {
   if [[ $1 != "" ]] ; then
@@ -35,11 +37,14 @@ set_window_title()
     cmd=""
   fi
   dir=`pwd | sed "s:${HOME}:~:"`
-  echo -n -e \\033]0\;$USER@`hostname -s`:$dir \($TITLE_LABEL\)$cmd\\007;
+  if [[ ${#dir} > $(($TITLE_DIRECTORY_MAX_LENGTH - 3)) ]] ; then
+    dir="...${dir:0,3-$TITLE_DIRECTORY_MAX_LENGTH}"
+  fi
+  echo -n -e \\033]0\;$TITLE_LABEL`hostname -s`:$dir $cmd\\007;
 }
 
-title() { export TITLE_LABEL="$*" }
-rtitle() { export TITLE_LABEL="shell" }
+title() { export TITLE_LABEL="$* #" }
+rtitle() { export TITLE_LABEL="$USER@" }
 precmd() { set_window_title; }
 preexec() { set_window_title $1; }
 
