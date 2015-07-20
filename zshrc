@@ -12,7 +12,7 @@ setopt correct
 setopt prompt_subst
 
 ##### Prompt
-prompt_base="%B%{$fg[white]%}%D{[%r] [%a %e %b %Y]}%(?.%{$fg_no_bold[green]%} [%?].%{$fg_bold[red]%} [%?])\$command_time_label%{$reset_color%}%b
+prompt_base="----- %B%{$fg[white]%}%D{[%r] [%a %e %b %Y]}%(?.%{$fg_no_bold[green]%} [%?].%{$fg_bold[red]%} [%?])\$command_time_label%{$reset_color%}%b
 
 ===== %B%{$fg[blue]%}%n%{$fg[white]%}@%{$fg[yellow]%}%m%{$fg[white]%}:%b%{$fg[white]%}%U%d%u"
 
