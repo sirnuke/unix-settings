@@ -98,3 +98,6 @@ autocmd BufRead,BufNewFile Makefile
 autocmd BufRead,BufNewFile *.md
     \ set syntax=markdown filetype=markdown spell
 
+autocmd BufRead,BufNewFile *.cs
+    \ set nobomb
+
