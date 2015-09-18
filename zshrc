@@ -108,6 +108,7 @@ preexec
 
 ##### Custom Commands
 rcd () { cd $*; dirs -c; }
+extensions () { find $1 -type f -name '*.*' | sed 's|.*\.||' | sort -u }
 
 ##### Aliases
 alias proxy='title "seleucus (proxy)"; ssh degrendel.getmyip.com -D 8080; title "**proxy closed**"'
