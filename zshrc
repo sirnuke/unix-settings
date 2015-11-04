@@ -111,7 +111,7 @@ rcd () { cd $*; dirs -c; }
 extensions () { find $1 -type f -name '*.*' | sed 's|.*\.||' | sort -u }
 
 ##### Aliases
-alias proxy='title "seleucus (proxy)"; ssh degrendel.getmyip.com -D 8080; title "**proxy closed**"'
+alias proxy='title "seleucus (proxy)"; ssh degrendel.com -D 8080; title "**proxy closed**"'
 alias mktags='ctags --langmap=php:+.inc --exclude=design --fields=+S -R *'
 alias mktagsv='ctags --langmap=php:+.inc --exclude=design --fields=+S -V -R *'
 alias ls='ls -h --color=auto'
