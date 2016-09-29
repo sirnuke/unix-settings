@@ -27,6 +27,7 @@ set lbr
 set formatoptions=nlro
 set backspace=indent,start
 set mouse=a
+let mapleader=" "
 let g:load_doxygen_syntax=1
 
 " Indenting
