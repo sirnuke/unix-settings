@@ -1,13 +1,14 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'shinokada/dragvisuals.vim'
 Plugin 'bling/vim-airline'
+Plugin 'artur-shaik/vim-javacomplete2'
 
 Bundle 'kchmck/vim-coffee-script'
 
@@ -101,3 +102,5 @@ autocmd BufRead,BufNewFile *.md
 autocmd BufRead,BufNewFile *.cs
     \ set nobomb
 
+autocmd FileType java
+    \ setlocal omnifunc=javacomplete#Complete
