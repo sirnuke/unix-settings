@@ -78,6 +78,9 @@ autocmd BufNewFile,BufRead *.php,*.inc
 autocmd BufNewFile,BufRead *.txt,bzr_log.*,.git/COMMIT_EDITMSG
     \ set spell
 
+autocmd BufNewFile,BufRead CMakeLists.txt
+    \ set nospell
+
 autocmd BufNewFile,BufRead *.m,*.j
     \ set syntax=objc filetype=objc
 
@@ -102,6 +105,9 @@ autocmd BufRead,BufNewFile *.md
 
 autocmd BufRead,BufNewFile *.cs
     \ set nobomb
+
+autocmd BufRead,BufNewFile pom.xml
+    \ set shiftwidth=4 tabstop=4 softtabstop=4
 
 autocmd FileType java
     \ setlocal omnifunc=javacomplete#Complete
