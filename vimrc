@@ -60,6 +60,10 @@ com Exec call ExecuteCurrentFile()
 nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>
 nnoremap S :exec "normal a".nr2char(getchar())."\e"<CR>
 
+" Set YCM Goto
+nnoremap <leader>jl :YcmCompleter GoTo<CR>
+inoremap <C-j>l :YcmCompleter GoTo<CR>
+
 " Specific filetype options
 autocmd BufNewFile,BufRead *.lisp
     \ set lisp
