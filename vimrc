@@ -61,6 +61,10 @@ com Exec call ExecuteCurrentFile()
 nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>
 nnoremap S :exec "normal a".nr2char(getchar())."\e"<CR>
 
+" Set YCM Goto
+nnoremap <leader>jl :YcmCompleter GoTo<CR>
+inoremap <C-j>l :YcmCompleter GoTo<CR>
+
 " Specific filetype options
 autocmd BufNewFile,BufRead *.lisp
     \ set lisp
@@ -78,6 +82,9 @@ autocmd BufNewFile,BufRead *.php,*.inc
 
 autocmd BufNewFile,BufRead *.txt,bzr_log.*,.git/COMMIT_EDITMSG
     \ set spell
+
+autocmd BufNewFile,BufRead CMakeLists.txt
+    \ set nospell
 
 autocmd BufNewFile,BufRead *.m,*.j
     \ set syntax=objc filetype=objc
@@ -103,6 +110,9 @@ autocmd BufRead,BufNewFile *.md
 
 autocmd BufRead,BufNewFile *.cs
     \ set nobomb
+
+autocmd BufRead,BufNewFile pom.xml
+    \ set shiftwidth=4 tabstop=4 softtabstop=4
 
 autocmd FileType java
     \ setlocal omnifunc=javacomplete#Complete
