@@ -9,6 +9,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'shinokada/dragvisuals.vim'
 Plugin 'bling/vim-airline'
 Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'rust-lang/rust.vim'
 
 Bundle 'kchmck/vim-coffee-script'
 
@@ -105,3 +106,6 @@ autocmd BufRead,BufNewFile *.cs
 
 autocmd FileType java
     \ setlocal omnifunc=javacomplete#Complete
+
+autocmd BufRead,BufNewFile *.rs
+    \ set tabstop=2 shiftwidth=2 softtabstop=2
