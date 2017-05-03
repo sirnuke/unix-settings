@@ -7,7 +7,8 @@ call vundle#rc()
 Plugin 'gmarik/Vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'shinokada/dragvisuals.vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'rust-lang/rust.vim'
 
