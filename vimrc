@@ -11,6 +11,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
 
 Bundle 'kchmck/vim-coffee-script'
 
