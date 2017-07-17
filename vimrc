@@ -45,7 +45,7 @@ vmap <expr> <DOWN>  DVB_Drag('down')
 vmap <expr> D       DVB_Duplicate()
 let g:DVB_TrimWS=1
 
-set colorcolumn=100
+set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
 
 func ExecuteCurrentFile()
