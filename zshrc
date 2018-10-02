@@ -109,6 +109,7 @@ preexec
 ##### Custom Commands
 rcd () { cd $*; dirs -c; }
 extensions () { find $1 -type f -name '*.*' | sed 's|.*\.||' | sort -u }
+drop_spaces () { find . -name "*.$1" -type f -print0 | xargs -0 sed -i '' -e 's/[[:space:]]*$//' }
 
 ##### Aliases
 alias proxy='title "seleucus (proxy)"; ssh degrendel.com -D 8080; title "**proxy closed**"'
