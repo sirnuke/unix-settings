@@ -12,6 +12,13 @@ setopt correct
 setopt prompt_subst
 
 ##### Prompt
+
+if [[ -n $STY ]] && [[ -n $WINDOW ]]; then
+    screen_label="[$STY:$WINDOW]"
+else
+    screen_label=""
+fi
+
 prompt_base="----- %B%{$fg[white]%}%D{[%r] [%a %e %b %Y]}%(?.%{$fg_no_bold[green]%} [%?].%{$fg_bold[red]%} [%?])\$command_time_label%{$reset_color%}%b
 
 ===== %B%{$fg[blue]%}%n%{$fg[white]%}@%{$fg[yellow]%}%m%{$fg[white]%}:%b%{$fg[white]%}%U%d%u"
@@ -25,7 +32,7 @@ fi
 export PS1="$prompt_base
 %b%{$fg[white]%}$prompt_user_character %{$reset_color%}"
 
-export RPS1="%{$fg_bold[white]%}%D{[%r] [%a %e %b %Y]}%{$reset_color%}%b"
+export RPS1="%{$fg_bold[white]%}%D{$screen_label [%r] [%a %e %b %Y]}%{$reset_color%}%b"
 
 set_command_time()
 {
