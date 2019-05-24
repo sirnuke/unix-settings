@@ -3,14 +3,14 @@ set -e
 set -x
 
 sudo apt update
-sudo apt install -y zsh meld build-essential git vim silversearch-ag libelf-dev dkms curl
+sudo apt install -y zsh meld build-essential git vim silversearcher-ag libelf-dev dkms curl
 
 cp -i vimrc ~/.vimrc
-cp -i -r vim ~/.vim
+cp -i -r vim ~/.vim/
 cp -i zshrc ~/.zshrc
 cp -i zlogout ~/.zlogout
 cp -i zlocal ~/.zlocal
-cp -i -r fonts ~/.fonts
+cp -i -r fonts ~/.fonts/
 cp -i nanorc ~/.nanorc
 cp -i tmux.conf ~/.tmux.conf
 
