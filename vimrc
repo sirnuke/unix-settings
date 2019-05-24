@@ -5,7 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'shinokada/dragvisuals.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'artur-shaik/vim-javacomplete2'
