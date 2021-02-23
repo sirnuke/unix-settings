@@ -1,0 +1,2 @@
+# Note: works fine in GNU-world, not in BSD-world (FreeBSD, macOS, etc)
+alias ls='ls -h --color=auto'

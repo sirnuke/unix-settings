@@ -122,7 +122,6 @@ drop_spaces () { find . -name "*.$1" -type f -print0 | xargs -0 sed -i '' -e 's/
 alias proxy='title "seleucus (proxy)"; ssh degrendel.com -D 8080; title "**proxy closed**"'
 alias mktags='ctags --langmap=php:+.inc --exclude=design --fields=+S -R *'
 alias mktagsv='ctags --langmap=php:+.inc --exclude=design --fields=+S -V -R *'
-alias ls='ls -h --color=auto'
 alias screen='screen -T xterm'
 alias update='sudo aptitude update && sudo aptitude -y full-upgrade'
 alias grep='grep --color=auto'

@@ -3,7 +3,7 @@ set -e
 set -x
 
 sudo apt update
-sudo apt install -y zsh meld build-essential git vim silversearcher-ag libelf-dev dkms curl
+sudo apt install -y zsh meld build-essential git vim silversearcher-ag libelf-dev dkms curl tree
 
 cp -i vimrc ~/.vimrc
 cp -i -r vim ~/.vim/
