@@ -3,12 +3,11 @@ set -e
 set -x
 
 sudo apt update
-sudo apt install -y zsh meld build-essential git vim silversearcher-ag libelf-dev dkms curl tree
+sudo apt install -y zsh build-essential git vim silversearcher-ag libelf-dev dkms curl tree
 
 cp -i vimrc ~/.vimrc
 cp -i -r vim ~/.vim/
 cp -i zshrc ~/.zshrc
-cp -i zlogout ~/.zlogout
 cp -i zlocal ~/.zlocal
 cp -i -r fonts ~/.fonts/
 cp -i nanorc ~/.nanorc
