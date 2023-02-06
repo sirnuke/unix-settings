@@ -1,9 +1,8 @@
 #!/bin/sh
-set -e
-set -x
+set -ex
 
 sudo apt update
-sudo apt install -y zsh build-essential git vim silversearcher-ag libelf-dev dkms curl tree
+sudo apt install -y zsh build-essential git vim silversearcher-ag libelf-dev dkms curl tree tmux bat httpie
 
 cp -i vimrc ~/.vimrc
 cp -i -r vim ~/.vim/
@@ -11,7 +10,8 @@ cp -i zshrc ~/.zshrc
 cp -i zlocal ~/.zlocal
 cp -i -r fonts ~/.fonts/
 cp -i nanorc ~/.nanorc
-cp -i tmux.conf ~/.tmux.conf
+
+mkdir -p ~/bin
 
 chsh -s /bin/zsh
 
